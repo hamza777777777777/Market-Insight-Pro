@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sovereign Analyst | Global Market Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error": "#ffb4ab",
+                      "surface": "#041329",
+                      "on-secondary-container": "#afb9c9",
+                      "on-background": "#d6e3ff",
+                      "surface-container-low": "#0d1c32",
+                      "secondary": "#bdc7d8",
+                      "surface-container-highest": "#27354c",
+                      "secondary-fixed": "#d9e3f4",
+                      "outline-variant": "#44474d",
+                      "on-primary-fixed-variant": "#39475f",
+                      "inverse-primary": "#515f78",
+                      "secondary-fixed-dim": "#bdc7d8",
+                      "primary-fixed-dim": "#b9c7e4",
+                      "surface-bright": "#2c3951",
+                      "on-primary": "#233148",
+                      "on-surface-variant": "#c5c6cd",
+                      "inverse-surface": "#d6e3ff",
+                      "background": "#041329",
+                      "on-tertiary-container": "#009466",
+                      "surface-dim": "#041329",
+                      "tertiary-fixed": "#6ffbbe",
+                      "on-secondary-fixed": "#121c28",
+                      "on-secondary": "#27313e",
+                      "primary": "#b9c7e4",
+                      "inverse-on-surface": "#233148",
+                      "on-tertiary": "#003824",
+                      "surface-variant": "#27354c",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "on-tertiary-fixed": "#002113",
+                      "on-primary-container": "#74829d",
+                      "surface-tint": "#b9c7e4",
+                      "error-container": "#93000a",
+                      "primary-fixed": "#d6e3ff",
+                      "on-primary-fixed": "#0d1c32",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "secondary-container": "#404a57",
+                      "primary-container": "#0a192f",
+                      "surface-container-lowest": "#010e24",
+                      "outline": "#8f9097",
+                      "on-surface": "#d6e3ff",
+                      "tertiary": "#4edea3",
+                      "tertiary-container": "#001e11",
+                      "surface-container-high": "#1c2a41",
+                      "on-error": "#690005",
+                      "on-secondary-fixed-variant": "#3e4755",
+                      "on-error-container": "#ffdad6",
+                      "surface-container": "#112036"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "fontFamily": {
+                      "headline": ["Manrope"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .text-glow {
+            text-shadow: 0 0 15px rgba(185, 199, 228, 0.3);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+      </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#041329]/80 backdrop-blur-md shadow-[0_24px_24px_rgba(214,227,255,0.04)] font-headline tracking-tight">
+<div class="flex justify-between items-center px-8 py-4 max-w-[1920px] mx-auto">
+<div class="text-xl font-bold tracking-tighter text-[#b9c7e4]">
+                Sovereign Analyst
+            </div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-[#b9c7e4] border-b-2 border-[#b9c7e4] pb-1" href="#">Dashboard</a>
+<a class="text-[#b9c7e4]/60 hover:text-[#b9c7e4] transition-colors" href="#">Markets</a>
+<a class="text-[#b9c7e4]/60 hover:text-[#b9c7e4] transition-colors" href="#">Portfolio</a>
+<a class="text-[#b9c7e4]/60 hover:text-[#b9c7e4] transition-colors" href="#">Analysis</a>
+</div>
+<div class="flex items-center space-x-6">
+<div class="flex items-center space-x-4">
+<span class="material-symbols-outlined text-[#b9c7e4] hover:bg-[#b9c7e4]/10 transition-all duration-300 p-2 cursor-pointer">notifications</span>
+<span class="material-symbols-outlined text-[#b9c7e4] hover:bg-[#b9c7e4]/10 transition-all duration-300 p-2 cursor-pointer">settings</span>
+</div>
+<div class="h-8 w-8 bg-surface-container-highest rounded-full overflow-hidden border border-outline-variant/30">
+<img alt="User Analytics Profile" class="w-full h-full object-cover" data-alt="professional portrait of a financial analyst in a dark suit against a blurred architectural background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzBDArWSXej00qVE1dQbH-F3DcGaZhLs5LH1sknjbK5o7DyU7mqJ9ruc4IrJiwFL2sOtZf8FKKybdo5YznmeRfT-9zAO1W3ndZFoOeOucuHppEt3nS-nvg8AdU3E4Im-tRAPNeUnp-cHsvp3l4ma1OwE6lD-5hfDuhraDtDKOfIpu-y0YNz3S_D1wO8yy2XFn7buNT20r8UT8w-wuSamFEsQGar9QghiiYJ4hFHHUR0oJy1r0IUAquhpf2w7-rk6zE4zEajrsWfTBU"/>
+</div>
+</div>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative px-8 py-20 overflow-hidden">
+<div class="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7 z-10">
+<span class="font-label text-xs uppercase tracking-[0.3em] text-primary/60 mb-6 block">The Sovereign Grade</span>
+<h1 class="font-headline text-6xl md:text-8xl font-extrabold tracking-tighter text-on-surface mb-8 leading-[0.95]">
+                        Global Market <br/> <span class="text-primary-fixed-dim">Intelligence</span>
+</h1>
+<p class="text-on-surface-variant text-lg md:text-xl max-w-xl mb-12 font-light leading-relaxed">
+                        Access institutional-grade terminal data and editorial financial analysis. Built for those who demand precision over noise.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary px-10 py-4 font-semibold tracking-wide hover:opacity-90 transition-all transform active:scale-[0.98]">
+                            Open Terminal
+                        </button>
+<button class="border border-outline-variant/40 text-on-surface px-10 py-4 font-semibold tracking-wide hover:bg-surface-container-high transition-all">
+                            View Documentation
+                        </button>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="bg-surface-container-low p-1 border border-outline-variant/15 relative z-10">
+<img alt="Financial Dashboard" class="w-full grayscale opacity-80 mix-blend-lighten" data-alt="high-resolution close up of a futuristic stock market terminal with glowing emerald and rose graphs on a dark screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdqLdUQbOMc9eFHns8UZp22jEmw3203H3XhL0bSSRN75Od6s1TzQfy2WtkxlMD-yn76zHcWKMXu6u6KuCmvTB9d2BNb48eH2PBsGqagP5JP0OmyzNMc_sgpyp07U3IRcZPaLIRWFBJO16XA45OJI8GjbvPkGaTlzB2EYvr51sjZ83J7nWmMpGRMjsXXop3hNy-RMjLQClj3-b53dvh2oIBcYfzbB5TcrguqNzNhrTLHsMEP7Jubd6Xs2WNJAjR9a9o8V2KzpVUev_G"/>
+</div>
+<div class="absolute -top-10 -right-10 w-64 h-64 bg-primary/10 rounded-full blur-[100px] -z-10"></div>
+</div>
+</div>
+</section>
+<!-- Market Overview (Tonal Layering Cards) -->
+<section class="px-8 py-16 bg-surface-container-lowest">
+<div class="max-w-[1440px] mx-auto">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="font-headline text-3xl font-bold text-on-surface">Indices Overview</h2>
+<div class="flex items-center gap-2 mt-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="text-xs uppercase tracking-widest text-on-surface-variant">Live Trading Session</span>
+</div>
+</div>
+<a class="text-primary text-sm font-semibold flex items-center gap-2 hover:underline" href="#">
+                        Detailed Markets <span class="material-symbols-outlined text-sm">north_east</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- S&P 500 -->
+<div class="bg-surface-container-low p-8 relative overflow-hidden group hover:bg-surface-bright transition-colors duration-500">
+<div class="flex justify-between items-start mb-10">
+<div>
+<h3 class="font-headline text-lg text-on-surface-variant">S&amp;P 500</h3>
+<div class="text-3xl font-headline font-bold mt-1">5,241.53</div>
+</div>
+<div class="text-tertiary font-mono text-sm">+1.24%</div>
+</div>
+<div class="h-16 w-full opacity-40">
+<!-- Sparkline Mockup -->
+<svg class="w-full h-full overflow-visible" viewbox="0 0 300 60">
+<path d="M0,45 Q30,40 60,50 T120,30 T180,45 T240,15 T300,5" fill="none" stroke="#4edea3" stroke-width="2"></path>
+</svg>
+</div>
+<div class="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="w-1 h-1 bg-tertiary rounded-full inline-block animate-pulse"></span>
+</div>
+</div>
+<!-- NASDAQ -->
+<div class="bg-surface-container-low p-8 relative overflow-hidden group hover:bg-surface-bright transition-colors duration-500">
+<div class="flex justify-between items-start mb-10">
+<div>
+<h3 class="font-headline text-lg text-on-surface-variant">NASDAQ</h3>
+<div class="text-3xl font-headline font-bold mt-1">16,428.82</div>
+</div>
+<div class="text-tertiary font-mono text-sm">+0.89%</div>
+</div>
+<div class="h-16 w-full opacity-40">
+<svg class="w-full h-full overflow-visible" viewbox="0 0 300 60">
+<path d="M0,50 Q40,30 80,45 T160,20 T240,35 T300,10" fill="none" stroke="#4edea3" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<!-- Dow Jones -->
+<div class="bg-surface-container-low p-8 relative overflow-hidden group hover:bg-surface-bright transition-colors duration-500">
+<div class="flex justify-between items-start mb-10">
+<div>
+<h3 class="font-headline text-lg text-on-surface-variant">Dow Jones</h3>
+<div class="text-3xl font-headline font-bold mt-1">39,475.90</div>
+</div>
+<div class="text-error font-mono text-sm">-0.12%</div>
+</div>
+<div class="h-16 w-full opacity-40">
+<svg class="w-full h-full overflow-visible" viewbox="0 0 300 60">
+<path d="M0,20 Q50,40 100,30 T200,55 T300,45" fill="none" stroke="#ffb4ab" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Advanced Analytics (Asymmetric Bento Grid) -->
+<section class="px-8 py-24">
+<div class="max-w-[1440px] mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<div class="lg:col-span-8 bg-surface-container-low min-h-[500px] p-12 flex flex-col justify-between border border-outline-variant/10">
+<div>
+<span class="font-label text-xs tracking-widest text-primary/60 uppercase mb-4 block">Institutional Framework</span>
+<h2 class="font-headline text-5xl font-bold mb-8 max-w-xl leading-tight">Advanced Volatility Analysis Engine</h2>
+<p class="text-on-surface-variant text-lg max-w-lg font-light">Our proprietary models detect structural shifts in market sentiment before they reach the main news cycles. Leverage the same signals used by boutique hedge funds.</p>
+</div>
+<div class="grid grid-cols-3 gap-12 mt-12 pt-12 border-t border-outline-variant/10">
+<div>
+<div class="text-3xl font-headline font-bold text-primary mb-1">0.1ms</div>
+<div class="text-xs uppercase tracking-widest text-on-surface-variant">Execution Latency</div>
+</div>
+<div>
+<div class="text-3xl font-headline font-bold text-primary mb-1">2.4B</div>
+<div class="text-xs uppercase tracking-widest text-on-surface-variant">Datapoints Scanned</div>
+</div>
+<div>
+<div class="text-3xl font-headline font-bold text-primary mb-1">99.8%</div>
+<div class="text-xs uppercase tracking-widest text-on-surface-variant">Model Accuracy</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col gap-6">
+<div class="bg-surface-container-highest p-10 flex-1 border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">insights</span>
+<h3 class="font-headline text-2xl font-bold mb-4">Sentiment Map</h3>
+<p class="text-on-surface-variant text-sm font-light leading-relaxed">Visualize the emotional pulse of the global market through AI-driven NLP analysis of over 50,000 regulatory filings per hour.</p>
+</div>
+<div class="bg-primary p-10 flex-1">
+<span class="material-symbols-outlined text-on-primary text-4xl mb-6">security</span>
+<h3 class="font-headline text-2xl font-bold text-on-primary mb-4">Risk Shield</h3>
+<p class="text-on-primary/80 text-sm font-light leading-relaxed">Dynamic risk management protocols that automatically adjust your exposure based on real-time macro-economic volatility.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Expert Insights (Editorial Style) -->
+<section class="px-8 py-24 bg-surface-container-lowest">
+<div class="max-w-[1440px] mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+<h2 class="font-headline text-5xl font-bold leading-tight">Expert Insights &amp; <br/>Editorial Outlook</h2>
+<p class="text-on-surface-variant max-w-sm font-light">Weekly strategic breakdowns from our lead analysts on rotation in New York, London, and Tokyo.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="group cursor-pointer">
+<div class="aspect-video mb-8 overflow-hidden">
+<img alt="New York Financial District" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale hover:grayscale-0 transition-all" data-alt="dramatic low angle shot of skyscraper glass facades reflecting a moody grey sky in New York financial district" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTXkVqln_3FzQCKZw5ogDxuyO58PEHDoIyDM_iQL6NH7IDaKIvqFD4jemtVG8Qo3BK_ZCbe6SvYAYtH9UBUJHolGoCUfGtXbKGy0PCbToXcMRwGEPGCBzVx1vG88-qskGFCZqIVYcogkCLbfQON3mp0_8iWNvaNXXiB_B_X7IBoBG8advtFJfqXMk_78xCX_uHe6nd8YmWsj7Upm8cEiRIlUE_tEm5g0u_XlOpa-jMvFVLJ5QU8PLA1XiYKacfhIvjokzra0hqfA1e"/>
+</div>
+<span class="text-xs font-label uppercase tracking-widest text-primary/60 mb-4 block">Macro Strategy</span>
+<h3 class="font-headline text-3xl font-bold mb-4 group-hover:text-primary transition-colors">The Great Recalibration: Why 2024 Diverges from Historical Cycles</h3>
+<p class="text-on-surface-variant font-light leading-relaxed mb-6">An in-depth look at how decoupling interest rates and sovereign debt levels are creating a new "Permanent Alternative" for institutional allocation.</p>
+<div class="flex items-center gap-4 text-xs font-label text-on-surface/40">
+<span>BY JULIAN VANCE</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>12 MIN READ</span>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-video mb-8 overflow-hidden">
+<img alt="Tech Stocks Analysis" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale hover:grayscale-0 transition-all" data-alt="close up of digital screens showing complex coding and stock market candlestick charts in a dimly lit server room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC95TqO7MJkkunmOxreQzY2O3bTsw8lgE-gcM3q-JsxF7zsnOk9ZeqrGGzR8o3M8xQRVkt_DyDv75Hueq8tthyTLFf5-ZQLNEFlUr4ruufxg6b-_2bSj4vrnTJ2TYOe4RKD8gw0YoNkKRX4WaTUIF2gGLngy7Z25yU6sqt5a2mqS2I4_53XsdhHiTdIYOjOvz0Ts266POk97SQkssui4SA4CegJLbBCrsB87U55UCP9D57n8i9sJ73hpc5-K9XbO6GnUFL0hHlw5Qy2"/>
+</div>
+<span class="text-xs font-label uppercase tracking-widest text-primary/60 mb-4 block">Technology &amp; AI</span>
+<h3 class="font-headline text-3xl font-bold mb-4 group-hover:text-primary transition-colors">Beyond the Hype: Quantifying Value in Generative AI Infrastructure</h3>
+<p class="text-on-surface-variant font-light leading-relaxed mb-6">Analyzing the physical layer of the AI boom—from silicon fabricators to power grid utility monopolies across the emerging tech corridor.</p>
+<div class="flex items-center gap-4 text-xs font-label text-on-surface/40">
+<span>BY ELARA KIN</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>8 MIN READ</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Real-time Data (High Density Table) -->
+<section class="px-8 py-24">
+<div class="max-w-[1440px] mx-auto bg-surface-container-low p-8 border border-outline-variant/10">
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-headline text-2xl font-bold">Watchlist Alpha</h2>
+<div class="flex items-center gap-4">
+<span class="text-xs text-on-surface-variant uppercase tracking-widest">Sort by: Volatility</span>
+<span class="material-symbols-outlined cursor-pointer">filter_list</span>
+</div>
+</div>
+<div class="overflow-x-auto no-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant/20">
+<th class="pb-6 text-xs uppercase tracking-widest font-semibold text-on-surface-variant">Asset</th>
+<th class="pb-6 text-xs uppercase tracking-widest font-semibold text-on-surface-variant">Price</th>
+<th class="pb-6 text-xs uppercase tracking-widest font-semibold text-on-surface-variant">24h Change</th>
+<th class="pb-6 text-xs uppercase tracking-widest font-semibold text-on-surface-variant">Market Cap</th>
+<th class="pb-6 text-xs uppercase tracking-widest font-semibold text-on-surface-variant">Strength</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="group hover:bg-surface-bright transition-colors">
+<td class="py-8 font-headline font-bold">
+<div class="flex items-center gap-4">
+<div class="w-1 h-4 bg-tertiary"></div>
+<div>
+<span>AAPL</span>
+<span class="block text-[10px] text-on-surface-variant font-body font-normal tracking-wide">Apple Inc.</span>
+</div>
+</div>
+</td>
+<td class="py-8 font-mono text-sm">$172.62</td>
+<td class="py-8 text-tertiary font-mono text-sm">+2.45%</td>
+<td class="py-8 text-on-surface-variant font-mono text-sm">$2.65T</td>
+<td class="py-8">
+<div class="flex gap-1">
+<div class="w-4 h-1 bg-tertiary"></div>
+<div class="w-4 h-1 bg-tertiary"></div>
+<div class="w-4 h-1 bg-tertiary"></div>
+<div class="w-4 h-1 bg-tertiary/20"></div>
+</div>
+</td>
+</tr>
+<tr class="group hover:bg-surface-bright transition-colors">
+<td class="py-8 font-headline font-bold">
+<div class="flex items-center gap-4">
+<div class="w-1 h-4 bg-error"></div>
+<div>
+<span>TSLA</span>
+<span class="block text-[10px] text-on-surface-variant font-body font-normal tracking-wide">Tesla Motors</span>
+</div>
+</div>
+</td>
+<td class="py-8 font-mono text-sm">$163.57</td>
+<td class="py-8 text-error font-mono text-sm">-1.12%</td>
+<td class="py-8 text-on-surface-variant font-mono text-sm">$521.4B</td>
+<td class="py-8">
+<div class="flex gap-1">
+<div class="w-4 h-1 bg-error"></div>
+<div class="w-4 h-1 bg-error/20"></div>
+<div class="w-4 h-1 bg-error/20"></div>
+<div class="w-4 h-1 bg-error/20"></div>
+</div>
+</td>
+</tr>
+<tr class="group hover:bg-surface-bright transition-colors">
+<td class="py-8 font-headline font-bold">
+<div class="flex items-center gap-4">
+<div class="w-1 h-4 bg-tertiary"></div>
+<div>
+<span>NVDA</span>
+<span class="block text-[10px] text-on-surface-variant font-body font-normal tracking-wide">NVIDIA Corp.</span>
+</div>
+</div>
+</td>
+<td class="py-8 font-mono text-sm">$894.52</td>
+<td class="py-8 text-tertiary font-mono text-sm">+4.82%</td>
+<td class="py-8 text-on-surface-variant font-mono text-sm">$2.24T</td>
+<td class="py-8">
+<div class="flex gap-1">
+<div class="w-4 h-1 bg-tertiary"></div>
+<div class="w-4 h-1 bg-tertiary"></div>
+<div class="w-4 h-1 bg-tertiary"></div>
+<div class="w-4 h-1 bg-tertiary"></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-[#b9c7e4]/15 mt-20 bg-[#041329]">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-12 gap-8 max-w-[1920px] mx-auto">
+<div class="font-manrope font-black text-[#b9c7e4]/40 uppercase tracking-[0.2em] text-lg">
+                Sovereign Analyst
+            </div>
+<div class="flex flex-wrap justify-center gap-8 font-inter text-xs uppercase tracking-widest text-[#b9c7e4]/50">
+<a class="hover:text-[#b9c7e4] transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-[#b9c7e4] transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-[#b9c7e4] transition-colors" href="#">Risk Disclosure</a>
+<a class="hover:text-[#b9c7e4] transition-colors text-[#4edea3]" href="#">Regulatory Filings</a>
+<a class="hover:text-[#b9c7e4] transition-colors" href="#">Contact Support</a>
+</div>
+<div class="text-center md:text-right max-w-md">
+<p class="font-inter text-xs uppercase tracking-widest text-[#b9c7e4]/30 leading-relaxed">
+                    © 2024 Sovereign Analyst Terminal. All market data delayed by 15 minutes. Financial Editorial Grade Analysis.
+                </p>
+</div>
+</div>
+</footer>
+</body></html>
