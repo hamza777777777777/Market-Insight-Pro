@@ -1,0 +1,188 @@
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+  min-height: calc(100vh - 64px);
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--color-on-surface-variant);
+  margin-bottom: 2.5rem;
+  transition: color 0.2s;
+}
+
+.back:hover { color: var(--color-primary); }
+
+.back .material-symbols-outlined { font-size: 1rem; }
+
+.eyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-tertiary);
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-family: var(--font-headline);
+  font-size: 2.25rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  line-height: 1.15;
+}
+
+.updated {
+  font-size: 0.75rem;
+  color: var(--color-on-surface-variant);
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(68, 71, 77, 0.4);
+}
+
+.section {
+  margin-bottom: 2.25rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-headline);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.02em;
+}
+
+.body {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--color-on-surface-variant);
+}
+
+.body a {
+  color: var(--color-tertiary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.body a:hover { color: var(--color-primary); }
+
+.highlight {
+  background: rgba(78, 222, 163, 0.07);
+  border-left: 3px solid var(--color-tertiary);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: 0.85rem 1.25rem;
+  margin: 1.25rem 0;
+  font-size: 0.85rem;
+  color: var(--color-on-surface);
+  line-height: 1.7;
+}
+
+.warning {
+  background: rgba(255, 180, 171, 0.07);
+  border-left: 3px solid var(--color-error);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: 0.85rem 1.25rem;
+  margin: 1.25rem 0;
+  font-size: 0.85rem;
+  color: var(--color-on-surface);
+  line-height: 1.7;
+}
+
+/* Contact form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-on-surface-variant);
+}
+
+.input,
+.textarea,
+.select {
+  background: var(--color-surface-container);
+  border: 1px solid rgba(68, 71, 77, 0.5);
+  border-radius: var(--radius-lg);
+  padding: 0.6rem 0.85rem;
+  color: var(--color-on-surface);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  border-color: var(--color-tertiary);
+  box-shadow: 0 0 0 2px rgba(78, 222, 163, 0.12);
+}
+
+.textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.select option { background: var(--color-surface-container); }
+
+.submitBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  background: linear-gradient(135deg, rgba(78,222,163,0.18) 0%, rgba(78,222,163,0.08) 100%);
+  border: 1px solid rgba(78, 222, 163, 0.35);
+  border-radius: var(--radius-lg);
+  color: var(--color-tertiary);
+  font-family: var(--font-headline);
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  align-self: flex-start;
+}
+
+.submitBtn:hover {
+  background: linear-gradient(135deg, rgba(78,222,163,0.28) 0%, rgba(78,222,163,0.14) 100%);
+  box-shadow: 0 0 20px rgba(78, 222, 163, 0.15);
+  transform: translateY(-1px);
+}
+
+.successMsg {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: rgba(78, 222, 163, 0.08);
+  border: 1px solid rgba(78, 222, 163, 0.25);
+  border-radius: var(--radius-lg);
+  color: var(--color-tertiary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(68, 71, 77, 0.35);
+  margin: 2.5rem 0;
+}
