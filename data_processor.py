@@ -1,9 +1,7 @@
 import yfinance as yf
 import pandas as pd
 import numpy as np
-import streamlit as st
 
-@st.cache_data(ttl=3600)
 def fetch_data(symbol, time_period):
     df = yf.download(symbol, period=time_period, progress=False)
     if not df.empty:

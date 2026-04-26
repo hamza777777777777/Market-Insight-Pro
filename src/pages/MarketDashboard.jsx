@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Sidebar from '../components/Sidebar'
 import Footer from '../components/Footer'
 import {
@@ -7,46 +7,36 @@ import {
 } from 'recharts'
 import styles from './MarketDashboard.module.css'
 
-const stats = [
-  { label: 'S&P 500',    value: '5,432.12', change: '+1.24%', abs: '+67.45 Today',   up: true,  icon: 'trending_up' },
-  { label: 'NASDAQ',     value: '18,239.90', change: '+0.88%', abs: '+158.20 Today',  up: true,  icon: 'memory' },
-  { label: 'BTC / USD',  value: '67,422.00', change: '-2.11%', abs: '-1,450.30 Today', up: false, icon: 'currency_bitcoin' },
-  { label: 'BRENT CRUDE',value: '84.15',     change: '+0.45%', abs: '+0.38 Today',    up: true,  icon: 'oil_barrel' },
+const defaultStats = [
+  { label: 'S&P 500',    value: '...', change: '...', abs: '...',   up: true,  icon: 'trending_up' },
+  { label: 'NASDAQ',     value: '...', change: '...', abs: '...',  up: true,  icon: 'memory' },
+  { label: 'BTC / USD',  value: '...', change: '...', abs: '...', up: false, icon: 'currency_bitcoin' },
+  { label: 'BRENT CRUDE',value: '...',     change: '...', abs: '...',    up: true,  icon: 'oil_barrel' },
 ]
 
-const equities = [
-  { ticker:'NVDA', name:'NVIDIA Corp.',         price:'$124.58', change:'+4.25%', mcap:'3.05T', pe:'72.4x', up:true },
-  { ticker:'AAPL', name:'Apple Inc.',           price:'$212.10', change:'-1.12%', mcap:'3.24T', pe:'31.2x', up:false },
-  { ticker:'TSLA', name:'Tesla Motors',         price:'$182.40', change:'+2.88%', mcap:'582.4B', pe:'44.8x', up:true },
-  { ticker:'AMD',  name:'Advanced Micro Devices',price:'$161.22', change:'+3.12%', mcap:'258.9B', pe:'192.4x', up:true },
-  { ticker:'META', name:'Meta Platforms Inc.',  price:'$504.18', change:'-0.45%', mcap:'1.28T', pe:'28.5x',  up:false },
+const defaultEquities = [
+  { ticker:'NVDA', name:'NVIDIA Corp.',         price:'...', change:'...', mcap:'...', pe:'...', up:true },
+  { ticker:'AAPL', name:'Apple Inc.',           price:'...', change:'...', mcap:'...', pe:'...', up:false },
+  { ticker:'TSLA', name:'Tesla Motors',         price:'...', change:'...', mcap:'...', pe:'...', up:true },
+  { ticker:'AMD',  name:'Advanced Micro Devices',price:'...', change:'...', mcap:'...', pe:'...', up:true },
+  { ticker:'META', name:'Meta Platforms Inc.',  price:'...', change:'...', mcap:'...', pe:'...',  up:false },
 ]
 
-const heatmap = [
-  { sector:'TECH',    pct:'+2.4%', up:true,  span:1 },
-  { sector:'SEMIS',   pct:'+1.1%', up:true,  span:1 },
-  { sector:'ENERGY',  pct:'-0.4%', up:false, span:1 },
-  { sector:'FINANCE', pct:'+0.2%', up:true,  span:2 },
-  { sector:'HLTH',    pct:'-1.8%', up:false, span:1 },
-  { sector:'RETAIL',  pct:'FLAT',  up:null,  span:1 },
-  { sector:'UTIL',    pct:'-0.9%', up:false, span:2 },
+const defaultHeatmap = [
+  { sector:'TECH',    pct:'...', up:true,  span:1 },
+  { sector:'SEMIS',   pct:'...', up:true,  span:1 },
+  { sector:'ENERGY',  pct:'...', up:false, span:1 },
+  { sector:'FINANCE', pct:'...', up:true,  span:2 },
+  { sector:'HLTH',    pct:'...', up:false, span:1 },
+  { sector:'RETAIL',  pct:'...',  up:null,  span:1 },
+  { sector:'UTIL',    pct:'...', up:false, span:2 },
 ]
 
-const news = [
-  { time:'12 MIN AGO', title:'Fed Chair Signals Potential Rate Cut in Q4 Amid Cooling Inflation Data', tags:['MACRO','RATES'], featured:true },
-  { time:'45 MIN AGO', title:'NVIDIA Expands Partnership with Sovereign Cloud Providers in EMEA Region', tags:['TECH','PARTNERSHIP'], featured:false },
-  { time:'1 HOUR AGO', title:'Crude Oil Stabilizes as Middle East Tensions Fade into Macro Headwinds', tags:['COMMODITIES'], featured:false },
+const defaultNews = [
+  { time:'LIVE', title:'Loading news...', tags:[], featured:true },
 ]
 
-// Generate mock sparkline data
-function genArea() {
-  return Array.from({length:30}, (_,i) => ({
-    i,
-    v: 100 + Math.sin(i/4)*12 + Math.random()*8 + i*0.5,
-  }))
-}
-
-const areaData = genArea()
+// Removed mock sparkline data, now fetched from Python Backend
 
 function heatmapBg(up) {
   if (up === true)  return 'rgba(78,222,163,0.6)'
@@ -72,6 +62,41 @@ const CustomTooltip = ({ active, payload, label }) => {
 
 export default function MarketDashboard() {
   const [tab, setTab] = useState('Gainers')
+  const [areaData, setAreaData] = useState([])
+  const [dashboardData, setDashboardData] = useState({
+    stats: defaultStats,
+    equities: defaultEquities,
+    heatmap: defaultHeatmap,
+    news: defaultNews
+  })
+
+  useEffect(() => {
+    // Fetch real dashboard data from Python API
+    fetch('http://localhost:5000/api/market-dashboard')
+      .then(res => res.json())
+      .then(resData => {
+         setDashboardData({
+           stats: resData.stats || defaultStats,
+           equities: resData.equities || defaultEquities,
+           heatmap: resData.heatmap || defaultHeatmap,
+           news: resData.news || defaultNews
+         })
+      })
+      .catch(err => console.error("Error fetching market dashboard data:", err))
+
+    // Fetch mini chart data
+    fetch('http://localhost:5000/api/stock/SPY?period=1mo')
+      .then(res => res.json())
+      .then(resData => {
+         if (resData.data) {
+           const mapData = resData.data.slice(-30).map((d, i) => ({ i, v: d.close || 0 }))
+           setAreaData(mapData)
+         }
+      })
+      .catch(err => console.error("Error fetching market dash chart:", err))
+  }, [])
+
+  const { stats, equities, heatmap, news } = dashboardData;
 
   return (
     <div className={styles.layout}>
